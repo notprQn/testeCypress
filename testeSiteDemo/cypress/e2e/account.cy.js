@@ -10,7 +10,7 @@ describe('Testando funções de conta', () => {
     cy.obrigatorio('joaopedro.resende04@gmail.com')
   })
 
-  it('Esqueceu Senha', () => {
+  it.only('Esqueceu Senha', () => {
     cy.esqueceuSenha('joaopedro.resende04@gmail.com')
   })
 })

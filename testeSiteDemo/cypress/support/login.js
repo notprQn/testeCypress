@@ -89,12 +89,12 @@ Cypress.Commands.add('register', (email) => {
     const log = Cypress.log({
       name: "forgot",
       displayName: "FORGOT",
-      message: [`🔐 Esqueceu a Senha`],
+      message: [`🔐 Esqueceu a Senha (CERTO)`],
       // @ts-ignore
       autoEnd: false,
     })
     
-    //Naveganda na página e fazendo o processo de 'esqueceu a senha'
+    //Naveganda na página e fazendo o processo de 'esqueceu a senha' (Caminho Certo)
     cy.visit('https://practice.automationtesting.in/')
     cy.get('#menu-icon', {log: false}).click({log: false})
     cy.get('#menu-item-50', {log: false}).click({log: false})
@@ -106,6 +106,23 @@ Cypress.Commands.add('register', (email) => {
     cy.get('.woocommerce-message').contains('Password reset email has been sent.').then(() => {
       //Dando um fim no log, para mostrar que ele foi conclúido
       log.end()
+    })
+
+    const log2 = Cypress.log({
+      name: "forgot",
+      displayName: "FORGOT",
+      message: [`🔐 Esqueceu a Senha (ERRADO)`],
+      // @ts-ignore
+      autoEnd: false,
+    })
+
+    //Caminho Errado
+    cy.visit('https://practice.automationtesting.in/my-account/lost-password/')
+    cy.get('#user_login').type('asdasdasd12543241324')
+    cy.get('.woocommerce-Button', {log: false}).click()
+    cy.get('.woocommerce-error > li').contains('Invalid username or e-mail.').then(() => {
+      //Dando um fim no log, para mostrar que ele foi conclúido
+      log2.end()
     })
   })
 

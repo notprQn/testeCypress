@@ -13,6 +13,7 @@ Cypress.Commands.add('filtro', () => {
     cy.get('#menu-icon').click()
     cy.get('#menu-item-40').click()
     cy.get('.orderby').should('exist')
+
     //Pegando o primeiro item de cada tipo de filtro
     cy.get('.products').eq(0).contains('Android Quick Start Guide')
     cy.get('.orderby').select('Sort by popularity')
@@ -29,6 +30,8 @@ Cypress.Commands.add('filtro', () => {
         log.end()
     })
 })
+
+//--------------------------------------------------------------------------------
 
 //Testando se todos as categorias estão funcionando corretamente
 Cypress.Commands.add('categoria', () => {
@@ -57,5 +60,46 @@ Cypress.Commands.add('categoria', () => {
     cy.get('.cat-item-17 > a').click()
     cy.get('.products').find('li').should('have.length', 1).then(() => {
         log.end()
+    })
+})
+
+//------------------------------------------------------------------------------------
+
+//Testando Botão de Subscribe
+Cypress.Commands.add('sub', () => {
+
+    const log = Cypress.log({
+        name: "sub",
+        displayName: "SUBSCRIBE",
+        message: [`📬 SUBSCRIBE... (CERTO)`],
+        // @ts-ignore
+        autoEnd: false,
+      })
+
+    //Caminho Certo
+    cy.visit('https://practice.automationtesting.in/')
+    cy.get('.mc4wp-alert > p').should('not.exist')
+    cy.get('.mc4wp-form-fields > :nth-child(1) > input').type('joaopedro.resende04@gmail.com').scrollIntoView()
+    cy.get(':nth-child(2) > input').click()
+    cy.get('.mc4wp-alert > p').should('exist').then(() => {
+        log.end()
+    })
+    
+
+    const log2 = Cypress.log({
+        name: "sub",
+        displayName: "SUBSCRIBE",
+        message: [`📬 SUBSCRIBE... (ERRADO)`],
+        // @ts-ignore
+        autoEnd: false,
+      })
+
+    //Caminho Errado
+    cy.visit('https://practice.automationtesting.in/')
+    cy.get('.mc4wp-alert > p').should('not.exist')
+    cy.get('.mc4wp-form-fields > :nth-child(1) > input').type('com').scrollIntoView()
+    cy.get(':nth-child(2) > input').click()
+    cy.get('.mc4wp-alert > p').should('not.exist').then(() => {
+        log2.end()
     })
 })

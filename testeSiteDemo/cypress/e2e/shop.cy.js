@@ -13,4 +13,8 @@ describe(('Testando funcionalidades do shop'), () => {
     it('Testando se as categorias funcionam', () => {
         cy.categoria()
     })
+
+    it.only('Testando botão "subscribe"', () => {
+        cy.sub()
+    })
 })
