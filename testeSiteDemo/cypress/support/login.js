@@ -40,6 +40,7 @@ Cypress.Commands.add('register', (email) => {
   })
   
   //--------------------------------------------------------------------------------------
+
   //Criando teste de login
   Cypress.Commands.add('login', (email) => {
     //Pegando respostas de API
@@ -92,7 +93,8 @@ Cypress.Commands.add('register', (email) => {
       // @ts-ignore
       autoEnd: false,
     })
-  
+    
+    //Naveganda na página e fazendo o processo de 'esqueceu a senha'
     cy.visit('https://practice.automationtesting.in/')
     cy.get('#menu-icon', {log: false}).click({log: false})
     cy.get('#menu-item-50', {log: false}).click({log: false})
@@ -107,6 +109,9 @@ Cypress.Commands.add('register', (email) => {
     })
   })
 
+  //--------------------------------------------------------------------------------------
+
+  // Testando se todos os campos de login são obrigatórios de serem preenchidos
   Cypress.Commands.add('obrigatorio', (email) => {
     cy.intercept('GET', '**/my-account').as('loginWait')
   
@@ -118,7 +123,8 @@ Cypress.Commands.add('register', (email) => {
       // @ts-ignore
       autoEnd: false,
     })
-  
+    
+    //Navegando as páginas e testando os inputs
     cy.visit('https://practice.automationtesting.in/')
     cy.get('#menu-icon', {log: false}).click({log: false})
     cy.get('#menu-item-50', {log: false}).click({log: false})

@@ -1,3 +1,4 @@
+//Testando se todos os filtros estão funcionando corretamente
 Cypress.Commands.add('filtro', () => {
     //Criando log Customizado para a função
     const log = Cypress.log({
@@ -29,6 +30,7 @@ Cypress.Commands.add('filtro', () => {
     })
 })
 
+//Testando se todos as categorias estão funcionando corretamente
 Cypress.Commands.add('categoria', () => {
     const log = Cypress.log({
         name: "filtro",
@@ -38,6 +40,7 @@ Cypress.Commands.add('categoria', () => {
         autoEnd: false,
       })
 
+    //Visitando e entrando na página de 'shop'
     cy.visit('https://practice.automationtesting.in/')
     cy.get('#menu-icon').click()
     cy.get('#menu-item-40').click()
