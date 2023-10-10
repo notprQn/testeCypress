@@ -1,11 +1,8 @@
-# testeCypress
-Estudo de testes com cypress
-
 <h1>Instalar</h1>
 
 <h3>
-- clonar o github;
-- abrir o projeto;
-- npm install cypress;
-- npx cypress open;
+- clonar o github;<br>
+- abrir o projeto;<br>
+- npm install cypress;<br>
+- npx cypress open;<br>
 </h3>
