@@ -1,4 +1,4 @@
-<h1>Instalar</h1>
+<h1>Como Instalar:</h1>
 
 <h3>
 - clonar o github;<br>
